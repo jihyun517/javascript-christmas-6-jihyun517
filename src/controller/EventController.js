@@ -1,6 +1,7 @@
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
 import { print } from "../commons/utils.js";
+import { MENU } from "../commons/constants.js";
 
 class EventController {
 
@@ -9,13 +10,13 @@ class EventController {
 
   async eventStart() {
     OutputView.printStart();
-    
+
     await this.#getOrderInformation();  // 주문 정보 입력받기
   }
 
   async #getOrderInformation() {
     await this.#getDate();
-
+    await this.#getMenu();
   }
 
 
@@ -23,6 +24,18 @@ class EventController {
     while (true) {
       try {
         this.#date = await InputView.inputDate();
+        break;
+      }
+      catch (error) {
+        print(error);
+      }
+    }
+  }
+
+  async #getMenu() {
+    while (true) {
+      try {
+        this.#menu = await InputView.inputMenu();
         break;
       }
       catch (error) {

@@ -7,6 +7,12 @@ const InputView = {
         const date = await input(MESSAGE.INPUT_DATE);
         await validDateCheck(date);
         return date;
+    },
+
+    async inputMenu() {
+        var menu = (await input(MESSAGE.INPUT_MENU)).replace(/\s+/g, ''); // 공백제거
+        //await validMenuCheck(menu);
+        return menu;
     }
 }
 
