@@ -1,7 +1,13 @@
-export default InputView = {
-    async readDate() {
-        const input = await Console.readLineAsync("12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)");
-        // ...
+import { input } from "../commons/utils.js"
+import { MESSAGE } from "../commons/constants.js";
+import { validDateCheck } from "../commons/validator.js";
+
+const InputView = {
+    async inputDate() {
+        const date = await input(MESSAGE.INPUT_DATE);
+        await validDateCheck(date);
+        return date;
     }
-    // ...
 }
+
+export default InputView;
