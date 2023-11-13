@@ -12,6 +12,8 @@ export const validOrderCheck = async (order) => {
 
   validMenuCheck(orderArray);
   validCountCheck(orderArray);
+
+  return orderArray;
 }
 
 const validMenuCheck = (orderArray) => {

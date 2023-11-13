@@ -12,11 +12,14 @@ class EventController {
     OutputView.printStart();
 
     await this.#getOrderInformation();  // 주문 정보 입력받기
+
+    OutputView.printOrderInformation(this.#date, this.#menu);
   }
 
   async #getOrderInformation() {
     await this.#getDate();
     await this.#getMenu();
+
   }
 
 

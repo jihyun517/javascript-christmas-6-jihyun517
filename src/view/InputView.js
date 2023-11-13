@@ -11,7 +11,7 @@ const InputView = {
 
     async inputMenu() {
         var menu = (await input(MESSAGE.INPUT_MENU)).replace(/\s+/g, ''); // 공백제거
-        await validOrderCheck(menu);
+        menu = await validOrderCheck(menu);
         return menu;
     }
 }

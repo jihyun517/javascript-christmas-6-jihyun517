@@ -5,17 +5,18 @@ export const MESSAGE = Object.freeze({
   INPUT_MENU: "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)\n",
 
   MONTH: "12월 ",
-  SHOW_BENEFIT: "에 우테코 식당에서 받을 이벤트 혜택 미리 보기!",
+  SHOW_BENEFIT: "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!",
 
-  MENU: "<주문 메뉴>",
-  TOTAL_AMOUNT: "<할인 전 총주문 금액>",
-  GIVEAWAY: "<증정 메뉴>",
-  BENEFIT_DETAILS: "<혜택 내역>",
-  BENEFIT_AMOUNT: "<총혜택 금액>",
-  PAYMENT_AMOUNT: "<할인 후 예상 결제 금액>",
-  EVENT_BADGE: "<12월 이벤트 배지>",
+  MENU: "\n<주문 메뉴>",
+  TOTAL_AMOUNT: "\n<할인 전 총주문 금액>",
+  GIVEAWAY: "\n<증정 메뉴>",
+  BENEFIT_DETAILS: "\n<혜택 내역>",
+  BENEFIT_AMOUNT: "\n<총혜택 금액>",
+  PAYMENT_AMOUNT: "\n<할인 후 예상 결제 금액>",
+  EVENT_BADGE: "\n<12월 이벤트 배지>",
 
   NOTHING: "없음",
+  BLANK: " ",
   EA: "개",
   WON: "원"
 });
