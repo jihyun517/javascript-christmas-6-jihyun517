@@ -1,6 +1,6 @@
 import { input } from "../commons/utils.js"
 import { MESSAGE } from "../commons/constants.js";
-import { validDateCheck } from "../commons/validator.js";
+import { validDateCheck, validOrderCheck } from "../commons/validator.js";
 
 const InputView = {
     async inputDate() {
@@ -11,7 +11,7 @@ const InputView = {
 
     async inputMenu() {
         var menu = (await input(MESSAGE.INPUT_MENU)).replace(/\s+/g, ''); // 공백제거
-        //await validMenuCheck(menu);
+        await validOrderCheck(menu);
         return menu;
     }
 }

@@ -49,3 +49,8 @@ export const MENU = Object.freeze({
     ["샴페인", 25000],
   ]
 })
+
+export const ARRAY = Object.freeze({
+  MENU: 0,
+  COUNT: 1
+})
