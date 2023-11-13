@@ -1,4 +1,4 @@
-import { print } from "../commons/utils.js"
+import { print, priceToString } from "../commons/utils.js"
 import { MESSAGE, ARRAY } from "../commons/constants.js";
 
 const OutputView = {
@@ -12,6 +12,11 @@ const OutputView = {
         menu[ARRAY.MENU].forEach((menuName, index) => {
             print(menuName + MESSAGE.BLANK + menu[ARRAY.COUNT][index] + MESSAGE.EA);
         })
+    },
+
+    printAllAmount(amount){
+        print(MESSAGE.TOTAL_AMOUNT);
+        print(priceToString(amount) + MESSAGE.WON);
     }
     // ...
 }
