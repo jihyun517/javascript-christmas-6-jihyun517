@@ -3,20 +3,15 @@ import { MENU, ARRAY } from "./constants.js";
 
 export const print = async (message) => MissionUtils.Console.print(message);
 
-export const input = async (message) =>
-  await MissionUtils.Console.readLineAsync(message);
+export const input = async (message) => await MissionUtils.Console.readLineAsync(message);
 
 // 문자열 형태의 메뉴 2차원 배열로 반환
 export const orderIntoArray = (allMenu) => {
   const eachMenu = allMenu.split(",");
-  const orderArray = Array.from(Array(2), () =>
-    Array.apply(eachMenu.length).fill(0)
-  );
+  const orderArray = Array.from(Array(2), () => Array.apply(eachMenu.length).fill(0));
   eachMenu.forEach((menu) => {
     orderArray[ARRAY.MENU].push(menu.substring(0, menu.indexOf("-")));
-    orderArray[ARRAY.COUNT].push(
-      parseInt(menu.substring(menu.lastIndexOf("-") + 1))
-    );
+    orderArray[ARRAY.COUNT].push(parseInt(menu.substring(menu.lastIndexOf("-") + 1)));
   });
 
   return orderArray;

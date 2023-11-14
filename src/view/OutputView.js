@@ -31,20 +31,14 @@ const OutputView = {
       print(MESSAGE.NOTHING);
     } else {
       benefitResult.forEach((benefit, index) => {
-        if (benefit !== 0)
-          print(
-            MESSAGE.BENEFIT_DETAILS_TITLE[index] +
-              priceToString(benefit) +
-              MESSAGE.WON
-          );
+        if (benefit !== 0) print(MESSAGE.BENEFIT_DETAILS_TITLE[index] + priceToString(benefit) + MESSAGE.WON);
       });
     }
   },
 
   printTotalBenefit(totalBenefit) {
     print(MESSAGE.TOTAL_BENEFIT);
-    if (totalBenefit > 0)
-      print(MESSAGE.HYPEN + priceToString(totalBenefit) + MESSAGE.WON);
+    if (totalBenefit > 0) print(MESSAGE.HYPEN + priceToString(totalBenefit) + MESSAGE.WON);
     else print(priceToString(totalBenefit) + MESSAGE.WON);
   },
 

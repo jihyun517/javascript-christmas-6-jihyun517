@@ -1,12 +1,4 @@
-import {
-  MENU,
-  MESSAGE,
-  ARRAY,
-  CALENDAR,
-  BENEFIT_AMOUNT,
-  BADGE,
-  BOUNDARY,
-} from "../commons/constants.js";
+import { MENU, MESSAGE, ARRAY, CALENDAR, BENEFIT_AMOUNT, BADGE, BOUNDARY } from "../commons/constants.js";
 import Order from "./Order.js";
 import { getMenu, getMenuCount } from "../commons/utils.js";
 
@@ -29,14 +21,10 @@ class Benefit {
 
     if (this.#isBenefit()) {
       if (this.#isDDay()) this.#benefitResult[ARRAY.DDAY] = this.#applyDDay();
-      if (this.#isWeekday())
-        this.#benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
-      if (this.#isWeekend())
-        this.#benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
-      if (this.#isSpecial())
-        this.#benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
-      if (this.#isGiveaway())
-        this.#benefitResult[ARRAY.GIVEAWAY] = this.#applyGiveaway();
+      if (this.#isWeekday()) this.#benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
+      if (this.#isWeekend()) this.#benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
+      if (this.#isSpecial()) this.#benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
+      if (this.#isGiveaway()) this.#benefitResult[ARRAY.GIVEAWAY] = this.#applyGiveaway();
     }
 
     return this.#benefitResult;
@@ -54,8 +42,7 @@ class Benefit {
 
   // 할인 후 예상 결제 금액
   expectedAmount() {
-    const totalDiscount =
-      this.totalBenefit() - this.#benefitResult[ARRAY.GIVEAWAY];
+    const totalDiscount = this.totalBenefit() - this.#benefitResult[ARRAY.GIVEAWAY];
 
     return this.#order.getAllAmount() - totalDiscount;
   }

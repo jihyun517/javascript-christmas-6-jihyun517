@@ -26,12 +26,7 @@ const validMenuCheck = (orderArray) => {
   });
 
   // 음료만 있는 경우인지 검사
-  if (
-    getMenu(MENU.DRINK).filter((drink) =>
-      orderArray[ARRAY.MENU].includes(drink)
-    ).length == orderArray[ARRAY.MENU].length
-  )
-    throw ERROR.ORDER;
+  if (getMenu(MENU.DRINK).filter((drink) => orderArray[ARRAY.MENU].includes(drink)).length == orderArray[ARRAY.MENU].length) throw ERROR.ORDER;
 };
 
 const validCountCheck = (orderArray) => {
