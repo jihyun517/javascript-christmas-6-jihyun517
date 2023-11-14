@@ -11,11 +11,7 @@ class Benefit {
   constructor(date, menu) {
     this.#date = date;
     this.#menu = menu;
-    this.#order = new Order(date, menu)
-  }
-
-  #isBenefit() {
-    return (this.#order.getAllAmount() > 10000)
+    this.#order = new Order(date, menu);
   }
 
   benefitDetail() {
@@ -26,26 +22,33 @@ class Benefit {
       if (this.#isWeekday()) benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
       if (this.#isWeekend()) benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
       if (this.#isSpecial()) benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
-
+      if (this.#isGiveaway()) benefitResult[ARRAY.GIVEAWAY] = this.#applyGiveaway();
     }
-    console.log("benefitResult", benefitResult);
     return benefitResult;
+  }
+  
+  #isBenefit() {
+    return (this.#order.getAllAmount() > 10000);
   }
 
   #isDDay() {
-    return (this.#date <= 25)
+    return (this.#date <= 25);
   }
 
   #isWeekday() {
-    return (CALENDAR.WEEKDAY.includes(this.#date))
+    return (CALENDAR.WEEKDAY.includes(this.#date));
   }
 
   #isWeekend() {
-    return (CALENDAR.WEEKEND.includes(this.#date))
+    return (CALENDAR.WEEKEND.includes(this.#date));
   }
 
   #isSpecial() {
-    return (CALENDAR.SPECIAL.includes(this.#date))
+    return (CALENDAR.SPECIAL.includes(this.#date));
+  }
+
+  #isGiveaway() {
+    return (this.#order.getAllAmount() >= 120000);
   }
 
   #applyDDay() {
@@ -58,16 +61,20 @@ class Benefit {
 
   #applyWeekday() {
     const menuCount = getMenuCount(getMenu(MENU.DESSERT), this.#menu);
-    return menuCount * DISCOUNT_AMOUNT.WEEKDAY
+    return menuCount * DISCOUNT_AMOUNT.WEEKDAY;
   }
 
   #applyWeekend() {
     const menuCount = getMenuCount(getMenu(MENU.MAIN), this.#menu);
-    return menuCount * DISCOUNT_AMOUNT.WEEKEND
+    return menuCount * DISCOUNT_AMOUNT.WEEKEND;
   }
 
   #applySpecial() {
     return DISCOUNT_AMOUNT.SPECIALDAY;
+  }
+
+  #applyGiveaway() {
+    return DISCOUNT_AMOUNT.GIVEAWAY;
   }
 
 }
