@@ -11,15 +11,23 @@ export const MESSAGE = Object.freeze({
   TOTAL_AMOUNT: "\n<할인 전 총주문 금액>",
   GIVEAWAY: "\n<증정 메뉴>",
   BENEFIT_DETAILS: "\n<혜택 내역>",
-  BENEFIT_AMOUNT: "\n<총혜택 금액>",
-  PAYMENT_AMOUNT: "\n<할인 후 예상 결제 금액>",
+  TOTAL_BENEFIT: "\n<총혜택 금액>",
+  EXPECTED_AMOUNT: "\n<할인 후 예상 결제 금액>",
   EVENT_BADGE: "\n<12월 이벤트 배지>",
 
   NOTHING: "없음",
+  HYPEN: "-",
   BLANK: " ",
   EA: "개",
-  WON: "원"
+  WON: "원",
+
+  GIVEAWAY_ITEM: "샴페인 1개",
+
+  BENEFIT_DETAILS_TITLE: ["크리스마스 디데이 할인: -", "평일 할인: -", "주말 할인: -", "특별 할인: -", "증정 이벤트: -"]
+
 });
+
+
 
 export const ERROR = Object.freeze({
   DATE: "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.",
@@ -71,7 +79,7 @@ export const CALENDAR = Object.freeze({
 export const BOUNDARY = Object.freeze({
   MENU_COUNT: 20,
   DDAY_END: 25,
-  
+
   BENEFIT_PRICE: 10000,
   GIVEAWAY_PRICE: 120000,
 

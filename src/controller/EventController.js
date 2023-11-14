@@ -23,7 +23,7 @@ class EventController {
 
     // 혜택 클래스 생성 & 혜택과 관련된 메세지 출력
     const benefit = new Benefit(this.#date, this.#menu);
-    this.printBenefit(benefit);
+    this.#printBenefit(benefit);
   }
 
   async #getOrderInformation() {
@@ -56,16 +56,12 @@ class EventController {
     }
   }
 
-
-  printBenefit(benefit) {
+  #printBenefit(benefit) {
     OutputView.printGiveaway(benefit.benefitDetail());  // <증정 메뉴>
-    OutputView.printBenefitDetaill(benefit.benefitDetail());  // <혜택 내역>
+    OutputView.printBenefitDetail(benefit.benefitDetail());  // <혜택 내역>
     OutputView.printTotalBenefit(benefit.totalBenefit()); // <총 혜텍 금액>
     OutputView.printExpectedAmount(benefit.expectedAmount()); // <할인 후 예상 결제 금액>
-    OutputView.printExpectedAmount(benefit.eventBadge()); // <12월 이벤트 배지>
+    OutputView.printEventBadge(benefit.eventBadge()); // <12월 이벤트 배지>
   }
-
-
-
 }
 export default EventController;

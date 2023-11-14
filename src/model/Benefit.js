@@ -1,4 +1,4 @@
-import { MENU, ARRAY, CALENDAR, BENEFIT_AMOUNT, BADGE, BOUNDARY } from "../commons/constants.js";
+import { MENU, MESSAGE, ARRAY, CALENDAR, BENEFIT_AMOUNT, BADGE, BOUNDARY } from "../commons/constants.js";
 import Order from "./Order.js";
 import { getMenu, getMenuCount } from "../commons/utils.js";
 
@@ -12,13 +12,14 @@ class Benefit {
     this.#date = date;
     this.#menu = menu;
     this.#order = new Order(date, menu);
-
-    // benefitResult [ DDay | Weekday | Weekend | Special | Giveaway ]
-    this.#benefitResult = [0, 0, 0, 0, 0]
   }
 
   // 혜택 내역
   benefitDetail() {
+
+    // benefitResult [ DDay | Weekday | Weekend | Special | Giveaway ]
+    this.#benefitResult = [0, 0, 0, 0, 0]
+
     if (this.#isBenefit()) {
       if (this.#isDDay()) this.#benefitResult[ARRAY.DDAY] = this.#applyDDay();
       if (this.#isWeekday()) this.#benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
@@ -51,6 +52,7 @@ class Benefit {
   eventBadge() {
     const totalBenefit = this.totalBenefit();
 
+    if (!this.#isBenefit()) return MESSAGE.NOTHING;
     if (totalBenefit <= BOUNDARY.STAR_PRICE) return BADGE.STAR;
     if (totalBenefit <= BOUNDARY.TREE_PRICE) return BADGE.TREE;
 
