@@ -3,7 +3,7 @@ import { ARRAY, MENU } from "../commons/constants.js";
 class Order {
   #date;
   #menu;
-  #allAmount = 0;
+  #allAmount;
 
   constructor(date, menu) {
     this.#date = date;
@@ -12,6 +12,7 @@ class Order {
 
   // 총 주문 금액
   getAllAmount() {
+    this.#allAmount = 0;
     const menuCategory = Object.keys(MENU);
     menuCategory.forEach((menuCategory) => {
       let menudetail = new Map(MENU[menuCategory]);
@@ -28,11 +29,6 @@ class Order {
         this.#allAmount += this.#menu[ARRAY.COUNT][index] * price;
       }
     })
-  }
-
-  // 카테고리 별 메뉴 개수 반환
-  getMenuCount(category) {
-
   }
 }
 export default Order;

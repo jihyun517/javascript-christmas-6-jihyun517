@@ -68,10 +68,29 @@ export const CALENDAR = Object.freeze({
   SPECIAL: ["3", "10", "17", "24", "25", "31"]
 })
 
-export const DISCOUNT_AMOUNT = Object.freeze({
+export const BOUNDARY = Object.freeze({
+  MENU_COUNT: 20,
+  DDAY_END: 25,
+  
+  BENEFIT_PRICE: 10000,
+  GIVEAWAY_PRICE: 120000,
+
+  STAR_PRICE: 5000,
+  TREE_PRICE: 10000,
+  SANTA_PRICE: 20000,
+})
+
+export const BENEFIT_AMOUNT = Object.freeze({
   DDAY_START: 1000,
+  DDAY_PLUS: 100,
   WEEKDAY: 2023,
   WEEKEND: 2023,
   SPECIALDAY: 1000,
   GIVEAWAY: 25000
+})
+
+export const BADGE = Object.freeze({
+  STAR: "별",
+  TREE: "트리",
+  SANTA: "산타"
 })
