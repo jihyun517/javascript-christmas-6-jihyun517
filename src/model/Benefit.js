@@ -1,6 +1,6 @@
 import { MENU, ARRAY, CALENDAR, DISCOUNT_AMOUNT } from "../commons/constants.js";
 import Order from "./Order.js";
-import { getMenu } from "../commons/utils.js";
+import { getMenu, getMenuCount } from "../commons/utils.js";
 
 class Benefit {
   #date;
@@ -46,18 +46,8 @@ class Benefit {
   }
 
   #applyWeekday() {
-    const menuCount = this.#getMenuCount(getMenu(MENU.DESSERT));
+    const menuCount = getMenuCount(getMenu(MENU.DESSERT), this.#menu);
     return menuCount * DISCOUNT_AMOUNT.WEEKDAY
-  }
-
-  #getMenuCount(menuArray) {
-    let menuCount = 0;
-    menuArray.forEach((menu) => {
-      this.#menu[ARRAY.MENU].forEach((myMenu, index) => {
-        if (menu === myMenu) menuCount += this.#menu[ARRAY.COUNT][index]
-      })
-    })
-    return menuCount;
   }
 
 }

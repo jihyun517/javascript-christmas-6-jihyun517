@@ -40,6 +40,17 @@ export const getMenu = (menuCategory) => {
   return allMenu;
 }
 
+// 카테고리 별 내 메뉴 개수 반환
+export const getMenuCount = (menuArray, myMenuArray) =>  {
+  let menuCount = 0;
+  menuArray.forEach((menu) => {
+    myMenuArray[ARRAY.MENU].forEach((myMenu, index) => {
+      if (menu === myMenu) menuCount += myMenuArray[ARRAY.COUNT][index]
+    })
+  })
+  return menuCount;
+}
+
 export const priceToString = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
