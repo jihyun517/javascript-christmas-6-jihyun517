@@ -24,6 +24,7 @@ class Benefit {
     if (this.#isBenefit()) {
       if (this.#isDDay()) benefitResult[ARRAY.DDAY] = this.#applyDDay();
       if (this.#isWeekday()) benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
+      if (this.#isWeekend()) benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
     }
     console.log("benefitResult", benefitResult);
     return benefitResult;
@@ -37,6 +38,10 @@ class Benefit {
     return (CALENDAR.WEEKDAY.includes(this.#date))
   }
 
+  #isWeekend() {
+    return (CALENDAR.WEEKEND.includes(this.#date))
+  }
+
   #applyDDay() {
     let discount = DISCOUNT_AMOUNT.DDAY_START;
     for (let day = 1; day < this.#date; day++) {
@@ -48,6 +53,11 @@ class Benefit {
   #applyWeekday() {
     const menuCount = getMenuCount(getMenu(MENU.DESSERT), this.#menu);
     return menuCount * DISCOUNT_AMOUNT.WEEKDAY
+  }
+
+  #applyWeekend() {
+    const menuCount = getMenuCount(getMenu(MENU.MAIN), this.#menu);
+    return menuCount * DISCOUNT_AMOUNT.WEEKEND
   }
 
 }
