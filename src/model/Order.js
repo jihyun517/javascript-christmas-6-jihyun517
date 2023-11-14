@@ -10,6 +10,7 @@ class Order {
     this.#menu = menu;
   }
 
+  // 총 주문 금액
   getAllAmount() {
     const menuCategory = Object.keys(MENU);
     menuCategory.forEach((menuCategory) => {
@@ -29,6 +30,7 @@ class Order {
     })
   }
 
+  // 카테고리 별 메뉴 개수 반환
   getMenuCount(category) {
 
   }

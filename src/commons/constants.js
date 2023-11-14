@@ -53,5 +53,11 @@ export const MENU = Object.freeze({
 
 export const ARRAY = Object.freeze({
   MENU: 0,
-  COUNT: 1
+  COUNT: 1,
+
+  DDAY: 0,
+  WEEKDAY: 1,
+  WEEKEND: 2,
+  SPECIALDAY: 3,
+  GIVEAWAY: 4,
 })
