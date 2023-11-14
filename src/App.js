@@ -1,7 +1,7 @@
-import EventController from "./controller/EventController.js"
+import EventController from "./controller/EventController.js";
 
 class App {
-  constructor(){
+  constructor() {
     this.eventController = new EventController();
   }
   async run() {

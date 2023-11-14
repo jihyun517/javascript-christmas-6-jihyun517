@@ -18,8 +18,8 @@ class Order {
       let menudetail = new Map(MENU[menuCategory]);
       menudetail.forEach((price, menu) => {
         this.#compareMenu(price, menu);
-      })
-    })
+      });
+    });
     return this.#allAmount;
   }
 
@@ -28,7 +28,7 @@ class Order {
       if (menu === myMenu) {
         this.#allAmount += this.#menu[ARRAY.COUNT][index] * price;
       }
-    })
+    });
   }
 }
 export default Order;

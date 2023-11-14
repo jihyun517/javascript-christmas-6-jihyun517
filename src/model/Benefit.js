@@ -1,4 +1,12 @@
-import { MENU, MESSAGE, ARRAY, CALENDAR, BENEFIT_AMOUNT, BADGE, BOUNDARY } from "../commons/constants.js";
+import {
+  MENU,
+  MESSAGE,
+  ARRAY,
+  CALENDAR,
+  BENEFIT_AMOUNT,
+  BADGE,
+  BOUNDARY,
+} from "../commons/constants.js";
 import Order from "./Order.js";
 import { getMenu, getMenuCount } from "../commons/utils.js";
 
@@ -6,7 +14,7 @@ class Benefit {
   #date;
   #menu;
   #order;
-  #benefitResult
+  #benefitResult;
 
   constructor(date, menu) {
     this.#date = date;
@@ -16,16 +24,19 @@ class Benefit {
 
   // 혜택 내역
   benefitDetail() {
-
     // benefitResult [ DDay | Weekday | Weekend | Special | Giveaway ]
-    this.#benefitResult = [0, 0, 0, 0, 0]
+    this.#benefitResult = [0, 0, 0, 0, 0];
 
     if (this.#isBenefit()) {
       if (this.#isDDay()) this.#benefitResult[ARRAY.DDAY] = this.#applyDDay();
-      if (this.#isWeekday()) this.#benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
-      if (this.#isWeekend()) this.#benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
-      if (this.#isSpecial()) this.#benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
-      if (this.#isGiveaway()) this.#benefitResult[ARRAY.GIVEAWAY] = this.#applyGiveaway();
+      if (this.#isWeekday())
+        this.#benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
+      if (this.#isWeekend())
+        this.#benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
+      if (this.#isSpecial())
+        this.#benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
+      if (this.#isGiveaway())
+        this.#benefitResult[ARRAY.GIVEAWAY] = this.#applyGiveaway();
     }
 
     return this.#benefitResult;
@@ -36,16 +47,17 @@ class Benefit {
     let totalBenefit = 0;
     this.#benefitResult.forEach((benefit) => {
       totalBenefit += benefit;
-    })
+    });
 
     return totalBenefit;
   }
 
   // 할인 후 예상 결제 금액
   expectedAmount() {
-    const totalDiscount = this.totalBenefit() - this.#benefitResult[ARRAY.GIVEAWAY];
+    const totalDiscount =
+      this.totalBenefit() - this.#benefitResult[ARRAY.GIVEAWAY];
 
-    return (this.#order.getAllAmount() - totalDiscount);
+    return this.#order.getAllAmount() - totalDiscount;
   }
 
   // 12월 이벤트 배지
@@ -59,29 +71,28 @@ class Benefit {
     return BADGE.SANTA;
   }
 
-
   #isBenefit() {
-    return (this.#order.getAllAmount() > BOUNDARY.BENEFIT_PRICE);
+    return this.#order.getAllAmount() > BOUNDARY.BENEFIT_PRICE;
   }
 
   #isDDay() {
-    return (this.#date <= BOUNDARY.DDAY_END);
+    return this.#date <= BOUNDARY.DDAY_END;
   }
 
   #isWeekday() {
-    return (CALENDAR.WEEKDAY.includes(this.#date));
+    return CALENDAR.WEEKDAY.includes(this.#date);
   }
 
   #isWeekend() {
-    return (CALENDAR.WEEKEND.includes(this.#date));
+    return CALENDAR.WEEKEND.includes(this.#date);
   }
 
   #isSpecial() {
-    return (CALENDAR.SPECIAL.includes(this.#date));
+    return CALENDAR.SPECIAL.includes(this.#date);
   }
 
   #isGiveaway() {
-    return (this.#order.getAllAmount() >= BOUNDARY.GIVEAWAY_PRICE);
+    return this.#order.getAllAmount() >= BOUNDARY.GIVEAWAY_PRICE;
   }
 
   #applyDDay() {
@@ -109,6 +120,5 @@ class Benefit {
   #applyGiveaway() {
     return BENEFIT_AMOUNT.GIVEAWAY;
   }
-
 }
 export default Benefit;
