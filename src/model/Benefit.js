@@ -25,6 +25,8 @@ class Benefit {
       if (this.#isDDay()) benefitResult[ARRAY.DDAY] = this.#applyDDay();
       if (this.#isWeekday()) benefitResult[ARRAY.WEEKDAY] = this.#applyWeekday();
       if (this.#isWeekend()) benefitResult[ARRAY.WEEKEND] = this.#applyWeekend();
+      if (this.#isSpecial()) benefitResult[ARRAY.SPECIALDAY] = this.#applySpecial();
+
     }
     console.log("benefitResult", benefitResult);
     return benefitResult;
@@ -40,6 +42,10 @@ class Benefit {
 
   #isWeekend() {
     return (CALENDAR.WEEKEND.includes(this.#date))
+  }
+
+  #isSpecial() {
+    return (CALENDAR.SPECIAL.includes(this.#date))
   }
 
   #applyDDay() {
@@ -58,6 +64,10 @@ class Benefit {
   #applyWeekend() {
     const menuCount = getMenuCount(getMenu(MENU.MAIN), this.#menu);
     return menuCount * DISCOUNT_AMOUNT.WEEKEND
+  }
+
+  #applySpecial() {
+    return DISCOUNT_AMOUNT.SPECIALDAY;
   }
 
 }
