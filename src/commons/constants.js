@@ -61,3 +61,17 @@ export const ARRAY = Object.freeze({
   SPECIALDAY: 3,
   GIVEAWAY: 4,
 })
+
+export const CALENDAR = Object.freeze({
+  WEEKDAY: ["4", "5", "6", "7", "11", "12", "13", "14", "18", "19", "20", "21", "25", "26", "27", "28"],
+  WEEKEND: ["1", "2", "8", "9", "15", "16", "22", "23", "29", "30"],
+  SPECIAL: ["3", "10", "17", "24", "31"]
+})
+
+export const DISCOUNT_AMOUNT = Object.freeze({
+  DDAY_START: 1000,
+  WEEKDAY: 2023,
+  WEEKEND: 2023,
+  SPECIAL: 1000,
+  GIVEAWAY: 25000
+})
