@@ -1,13 +1,14 @@
 import { ERROR, ARRAY, MENU } from "./constants.js";
 import { getAllMenu, orderIntoArray, getMenu } from "./utils.js";
 
-export const validDateCheck = async (date) => {
+export const validDateCheck = (date) => {
   if (date < 1 || date > 31 || isNaN(date)) {
     throw ERROR.DATE;
   }
+  return date;
 };
 
-export const validOrderCheck = async (order) => {
+export const validOrderCheck = (order) => {
   const orderArray = orderIntoArray(order);
 
   validMenuCheck(orderArray);
